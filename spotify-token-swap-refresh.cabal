@@ -1,0 +1,66 @@
+name:                spotify-token-swap-refresh
+version:             0.1.0.0
+description:         Spotify token swap and refresh server
+homepage:            https://github.com/shrynx/spotify-token-swap-refresh#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Shriyans Bhatnagar
+maintainer:          shriyansbhatnagar@gmail.com
+copyright:           2018 Shriyans
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Spotify
+  other-modules:       Config
+                     , Spotify.API
+                     , Spotify.Types
+                     , Utils
+  build-depends:       base >= 4.7 && < 5
+                     , aeson
+                     , aeson-casing
+                     , http-client
+                     , http-client-tls
+                     , http-api-data
+                     , servant
+                     , servant-server
+                     , servant-client
+                     , relude
+                     , bytestring
+                     , text
+                     , base64-bytestring
+                     , crypto-simple
+  default-language:    Haskell2010
+  default-extensions:  NoImplicitPrelude
+                     , OverloadedStrings
+
+executable spotify-token-swap-refresh
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  other-modules:       AppConfig
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , relude
+                     , envy
+                     , warp
+                     , spotify-token-swap-refresh                                     
+  default-language:    Haskell2010
+  default-extensions:  NoImplicitPrelude
+                     , OverloadedStrings
+
+test-suite spotify-token-swap-refresh-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , relude
+                     , spotify-token-swap-refresh
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/shrynx/spotify-token-swap-refresh

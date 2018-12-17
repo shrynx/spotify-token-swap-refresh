@@ -1,0 +1,15 @@
+version: '3'
+services:
+    spotify-token-swap-refresh:
+        build: .
+        image: spotify-token-swap-refresh
+        command: spotify-token-swap-refresh
+        expose:
+            - "5000"
+    nginx:
+        build: ./nginx
+        image: nginx
+        ports:
+            - "8080:80"
+        depends_on:
+            - spotify-token-swap-refresh

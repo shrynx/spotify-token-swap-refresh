@@ -1,0 +1,3 @@
+:set -Wall
+:set -Werror
+:set -XNoImplicitPrelude
